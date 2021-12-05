@@ -20,21 +20,30 @@ class App extends React.Component {
     ],
   }
 
+  nameRef = React.createRef()
+  priceRef = React.createRef()
   add = () => {
     let id = this.state.items.length + 1
+    let name = this.nameRef.current.value
+    let price = this.priceRef.current.value
     this.setState({
-      items: [...this.state.items, { id, name: 'Mango', price: 1.46 }],
+      items: [...this.state.items, { id, name, price }],
     })
   }
+  onBlur = () => {}
 
   render() {
     const items = this.state.items.map((item) => {
-      return <Item name={item.name} price={item.price} />
+      return <Item key={item.id} name={item.name} price={item.price} />
     })
     return (
       <div>
         <h1>Welcome To Basic React</h1>
         <ul>{items}</ul>
+        <input type="text" ref={this.nameRef} />
+        <br />
+        <input type="text" ref={this.priceRef} />
+        <br />
         <button type="submit" onClick={this.add}>
           Add
         </button>
