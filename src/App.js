@@ -1,16 +1,7 @@
 import React from 'react'
+import InputForm from './components/InputForm'
+import Item from './components/Item'
 
-class Item extends React.Component {
-  render() {
-    const name = this.props.name
-    const price = this.props.price
-    return (
-      <li>
-        {name}, $ {price}
-      </li>
-    )
-  }
-}
 
 class App extends React.Component {
   state = {
@@ -40,13 +31,7 @@ class App extends React.Component {
       <div>
         <h1>Welcome To Basic React</h1>
         <ul>{items}</ul>
-        <input type="text" ref={this.nameRef} />
-        <br />
-        <input type="text" ref={this.priceRef} />
-        <br />
-        <button type="submit" onClick={this.add}>
-          Add
-        </button>
+        <InputForm add={this.add} name={this.nameRef} price={this.priceRef} />
       </div>
     )
   }
